@@ -16,9 +16,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 public class HelloJobConfig {
     @Bean
-    public Job helloJob(JobRepository jobRepository, Step simpleStep1) {
+    public Job helloJob(JobRepository jobRepository, Step helloStep1) {
         return new JobBuilder("helloJob", jobRepository)
-                .start(simpleStep1)
+                .start(helloStep1)
                 .incrementer(new RunIdIncrementer()) // 잡이 매번 실행되게끔 만들어줌
                 .build();
     }
@@ -38,4 +38,6 @@ public class HelloJobConfig {
             return RepeatStatus.FINISHED;
         });
     }
+
+
 }

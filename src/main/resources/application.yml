@@ -19,6 +19,8 @@ spring:
         highlight_sql: true
         use_sql_comments: true
   batch:
+    job:
+      name: hello2Job
     jdbc:
       initialize-schema: always #스키마(테이블)을 생성 관리
 logging:
