@@ -3,6 +3,8 @@ package com.ll.sbb20240111.batch.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.JobScope;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
@@ -25,6 +27,7 @@ public class Hello2JobConfig {
     }
 
     @Bean
+    @JobScope
     public Step hello2Step1(JobRepository jobRepository, Tasklet hello2Step1Tasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("helloStep1Tasklet", jobRepository)
                 .tasklet(hello2Step1Tasklet, platformTransactionManager)
@@ -32,6 +35,7 @@ public class Hello2JobConfig {
     }
 
     @Bean
+    @JobScope
     public Step hello2Step2(JobRepository jobRepository, Tasklet hello2Step2Tasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("helloStep1Tasklet", jobRepository)
                 .tasklet(hello2Step2Tasklet, platformTransactionManager)
@@ -39,6 +43,7 @@ public class Hello2JobConfig {
     }
 
     @Bean
+    @StepScope
     public Tasklet hello2Step1Tasklet() {
         return ((contribution, chunkContext) -> {
             System.out.println("Hello World 2/1");
@@ -47,6 +52,7 @@ public class Hello2JobConfig {
     }
 
     @Bean
+    @StepScope
     public Tasklet hello2Step2Tasklet() {
         return ((contribution, chunkContext) -> {
             System.out.println("Hello World 2/2");

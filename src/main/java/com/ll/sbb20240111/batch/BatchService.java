@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BatchService {
     private final JobLauncher jobLauncher;
-    private final Job simpleJob; //Bean으로 등록된 helloJob
+    private final Job helloJob; //Bean으로 등록된 helloJob
 
     public void runSimpleJob() {
         try {
             JobParameters jobParameters = new JobParametersBuilder()
                     .addLong("time",System.currentTimeMillis()) // 없으면 재실행안됨 EXIT_CODE가 NOOP
                     .toJobParameters();
-            jobLauncher.run(simpleJob, jobParameters);
+            jobLauncher.run(helloJob, jobParameters);
         } catch (Exception e) {
             e.printStackTrace();
         }
