@@ -56,7 +56,6 @@ public class Hello3JobConfig {
     }
 
     @Bean
-    @JobScope
     public Step hello3Step1(JobRepository jobRepository, Tasklet hello3Step1Tasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("hello3Step1Tasklet", jobRepository)
                 .tasklet(hello3Step1Tasklet, platformTransactionManager)
@@ -73,7 +72,6 @@ public class Hello3JobConfig {
     }
 
     @Bean
-    @JobScope
     public Step hello3Step2(JobRepository jobRepository, Tasklet hello3Step2Tasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("hello3Step2Tasklet", jobRepository)
                 .tasklet(hello3Step2Tasklet, platformTransactionManager)
