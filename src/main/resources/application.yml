@@ -20,7 +20,7 @@ spring:
         use_sql_comments: true
   batch:
     job:
-      name: hello2Job
+      enabled: false #자동실행 필요없음 필요하면 name : Job 이름
     jdbc:
       initialize-schema: always #스키마(테이블)을 생성 관리
 logging:

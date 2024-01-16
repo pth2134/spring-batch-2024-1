@@ -28,7 +28,7 @@ public class HelloJobConfig {
     @Bean
     @JobScope
     public Step helloStep1(JobRepository jobRepository, Tasklet helloStep1Tasklet, PlatformTransactionManager platformTransactionManager) {
-        return new StepBuilder("helloStep1Tasklet1", jobRepository)
+        return new StepBuilder("helloStep1Tasklet", jobRepository)
                 .tasklet(helloStep1Tasklet, platformTransactionManager)
                 .build();
     }
